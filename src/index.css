@@ -1,13 +1,79 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Lalezar&family=Lekton:ital,wght@0,400;0,700;1,400&display=swap');
+
+:root {
+  --primary: #1B9AAA;
+  --light: #F2F3D9;
+  --dark: #050505;
+
+  --hero-diameter: 373px;
+  --hero-radius: calc(var(--hero-diameter) / 2);
+  
+  --face-diameter: calc(var(--hero-diameter) - 100);
+  
+  --hero-moon-diameter: 55px;
+  --hero-moon-radius: calc(var(--hero-moon-diameter) / 2);
+  --neg-hero-moon-radius: calc(var(--hero-moon-radius) * -1);
+  
+  --root-two-over-two: 0.7071067812;
+  --unit-offset: calc(1 - var(--root-two-over-two));
+  --point-offset: calc(var(--unit-offset) * var(--hero-radius) * -1);
+  --hero-moon-offset: calc(var(--point-offset) + var(--hero-moon-radius));
+
+  --skill-size: 165px;
+
+  --project-skill-size: 20px;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+/* @media (max-width: 815px) {
+  :root {
+    --hero-diameter: 340px;
+    --hero-moon-diamter: 50px;
+  }
+} */
+
+@media (max-width: 815px) {
+  :root {
+    --hero-diameter: 340px;
+  }
+}
+
+@media (max-width: 550px) {
+  :root {
+    --hero-diameter: 280px;
+    --hero-moon-diameter: 40px;
+  }
+}
+
+@layer base {
+  html {
+    @apply scroll-smooth
+  }
+
+  p, label {
+    @apply font-[Lekton]
+  }
+
+  li {
+    @apply text-sm sm:text-xl text-[var(--light)]
+  }
+
+  h1 {
+    @apply text-[var(--dark)] font-[Lalezar] text-5xl
+  }
+
+  h2 {
+    @apply text-xl text-[var(--dark)] font-[Lalezar]
+  }
+
+  h3, a {
+    @apply font-[Lekton] text-[var(--light)]
+  }
+
+  input:-webkit-autofill {
+    box-shadow: 0 0 0px 1000px white inset !important;
+  }
 }
